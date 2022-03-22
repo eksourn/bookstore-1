@@ -1,5 +1,5 @@
 <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-    <div class="book_name">
+    <div class="input-box">
         <label for="book_name">Title;</label>
         <input type="text" name="book_name" id="" placeholder="Enter Title" 
         value="<?php 
@@ -13,7 +13,7 @@
         ?>" 
         required>
     </div>
-    <div class="book_isbn">
+    <div class="input-box">
         <label for="book_isbn">ISBN:</label>
         <input type="text" name="book_isbn" id="" placeholder="Enter ISBN"
         value="<?php
@@ -28,7 +28,7 @@
         required>
     </div>
     
-    <div class="book_genre" 
+    <div class="input-box" 
     <?php 
         if(basename($_SERVER['PHP_SELF']) == 'edit-books.php'){
             echo 'hidden';
@@ -53,7 +53,7 @@
             <?php endforeach;?>
         </select>
     </div>
-    <div class="book_type" <?php 
+    <div class="input-box" <?php 
         if(basename($_SERVER['PHP_SELF']) == 'edit-books.php'){
             echo 'hidden';
         }
@@ -76,7 +76,7 @@
             <?php $index++; endforeach;?>
         </select>
     </div>
-    <div class="book_price">
+    <div class="input-box">
         <label for="book_price">Price:</label>
         <input type="number" name="book_price" id="" placeholder="0.00" step="0.01" min="<?php echo $min_price; ?>" max="<?php echo $max_price; ?>" 
         value="
@@ -88,7 +88,7 @@
         required>
     </div>
 
-    <div class="book_author" 
+    <div class="input-box" 
     <?php 
         if(basename($_SERVER['PHP_SELF']) == 'edit-books.php'){
             echo 'hidden';
@@ -123,7 +123,7 @@
         </div>
         <p>Not listed? <a href="#">Register here</a></p>
     </div>
-    <div class="form-add">
+    <div class="input-box">
         <button type="submit" 
         name="<?php
             if(basename($_SERVER['PHP_SELF']) == 'publisher.php'){
@@ -183,4 +183,7 @@
         ?>
 
     </button>
+    
 </form>
+
+<a style="pointer-events: all;" href="<?php echo (isset($_GET['next'])) ? $next.'?pub=T' :  "../index.php" ?>" <?php if(basename($_SERVER['PHP_SELF']) == 'edit-books.php') {echo "hidden";} ?>><button>Cancel</button></a>
