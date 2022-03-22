@@ -34,20 +34,8 @@
     }
 
 
-    .book_name {margin-bottom: 10px;}
-    .book_isbn {margin-bottom: 10px;}
-    .book_author {margin-bottom: 10px;}
-    .book_genre {margin-bottom: 10px;}
-    .book_type {margin-bottom: 10px;}
-    .book_price {margin-bottom: 10px;}
-    .from-add {margin-bottom: 10px;}
-    .publisher-username {margin-bottom: 10px;}
-    .publisher-password {margin-bottom: 10px;}
-    .publisher_signup-name {margin-bottom: 10px;}
-    .publisher-signup-username {margin-bottom: 10px;}
-    .publisher-signup-password {margin-bottom: 10px;}
-    .publisher-signup-address {margin-bottom: 10px;}
-    .publisher-signup-phone {margin-bottom: 10px;}
+    .input-box {margin-bottom: 10px;}
+    .admin {text-align: center;}
 
     .center {
         position: absolute;
@@ -68,12 +56,20 @@
         height: 100px; 
         overflow-y: scroll; 
     }
+
+    <?php if(isset($_GET['next'])): ?>
+ 
+            a {
+                pointer-events: none;
+            }
+ 
+    <?php endif; ?>
     
 
 </style>
 </head>
 <body>
     <div class="title-container">
-        <h1 class="title-col"><a href="<?php echo check_page_path(); ?>" style="text-decoration: none; color: black; ">BookStore: DB2 Project</a></h1>
+        <h1 class="title-col"><a href="<?php echo check_page_path(); ?>" style="text-decoration: none; color: black; pointer-events:all;">BookStore: DB2 Project</a></h1>
     </div>
     <hr>
