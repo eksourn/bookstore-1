@@ -3,10 +3,18 @@
     include('../config/db_connection.php');
     include('../variables/variables.php');
     include('../functions/functions.php');
+
+    
  
     session_start();
     $typed_inputs = array('title' =>'', 'isbn'=>'', 'genre'=>'', 'type'=>'', 'price'=>'', 'authors'=>array());
-
+    if(isset($_GET['pubname'])){
+        $_SESSION['publisher_name'] = $_GET['pubname'];
+    }
+    $next ="";
+    if(isset($_GET['next'])){
+        $next = $_GET['next'];
+    }
 
     $publisher_name = htmlspecialchars($_SESSION['publisher_name']);
 
@@ -22,10 +30,6 @@
     $result = mysqli_query($conn, $sql);
     $available_authors = mysqli_fetch_all($result, MYSQLI_ASSOC);
     mysqli_free_result($result);
-
-    echo '<br><br><br>';
-    print_r($available_authors);
-    echo '<br><br><br>';
 
     if(isset($_POST['delete_book'])){
         $id_to_del =  htmlspecialchars($_POST['id_to_del']);
@@ -75,7 +79,13 @@
                         $typed_inputs['type'] = '';
                         $typed_inputs['price'] = '';
                         $typed_inputs['authors'] = array();
-                        header('refresh: 0; url = ./publisher.php');
+                        if(isset($_GET['next'])){
+                            $next = $_GET['next'];
+                            header("Location: $next?pub=T");
+                        } else{
+                            header('refresh: 0; url = ./publisher.php');
+                        }
+                        
                     } else{
                         echo '<script>alert("Unable to add new authors")</script>';
                     }
@@ -105,6 +115,8 @@
             return $book_types[$type];
         }
     ?>
+
+    
    
     <h1>Welcome <?php echo $_SESSION['publisher_name']; ?></h1> <hr>
     <div class="publisher-center">
@@ -140,6 +152,8 @@
                     <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
                         <input type="hidden" name= "id_to_del" value="<?php echo $book['book_id']; ?>">
                         <button style="font-size: 20px; text-align: center; border-radius: 50%; color: red; border: 2px solid red;" type="submit" name="delete_book" value=""><b>&#8722;</b></button>
+
+                        
                     </form>
                 </td>
             </tr>
