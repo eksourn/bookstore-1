@@ -18,6 +18,8 @@
         }
     } else if (isset($_POST['users'])){
         // this is where user log in page goes
+    }else if (isset($_POST['admin'])){
+        // this is where admin user goes
     }
 ?>
 
@@ -31,6 +33,7 @@
             <div class="log-in-type">
                 <button type="submit" name="users" <?php if(isset($_SESSION['publisher_logged_in']) && $_SESSION['publisher_logged_in']==True) echo 'disabled'; ?> >Users</button>
                 <button type="submit" name="publishers">Publishers</button>
+                <button type="submit" name="admin">Admin</button>
             </div>
         </form>
     </div>
