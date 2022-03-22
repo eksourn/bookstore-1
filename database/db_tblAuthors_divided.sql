@@ -103,6 +103,9 @@ CREATE TABLE tbl_discounts(
     expired_at datetime DEFAULT NULL
 );
 
+ALTER TABLE tbl_discounts
+ADD UNIQUE(discount_code);
+
 
 -- Author Tables
 CREATE TABLE tbl_is_author(
