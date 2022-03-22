@@ -40,16 +40,16 @@
     <div class="publisher-log-in center">
         <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
             <h3>Publishers Log In</h3>
-            <div class="publisher-username">
+            <div class="input-box">
                 <label for="publisher-username">Username: </label>
                 <input type="text" name="publisher_username" id="" placeholder="Enter username" value="<?php echo $typedIn['user_name']; ?>">
             </div>
-            <div class="publisher-password">
+            <div class="input-box">
                 <label for="publisher-password">Pasword: </label>
                 <input type="password" name="publisher_password" id="" placeholder="Enter password">
             </div>
 
-            <div class="submit-buttons">
+            <div class="input-box">
                 <button type="submit" name="publisher_login">Log in</button>
                 <button type="submit" name="cancel" value="Cancel">Cancel </button>
             </div>
