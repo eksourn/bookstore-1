@@ -26,7 +26,7 @@
             $typedIn['user_name'] = '';
             $_SESSION['f_name'] = $users[0]['f_name'];
             $_SESSION['l_name'] = $users[0]['l_name'];
-            $_SESSION['user_username'] = $users[0]['user_username'];
+            $_SESSION['user_username'] = $users[0]['username'];
             $_SESSION['user_id'] = $users[0]['user_id'];
             $_SESSION['user_logged_in'] = True;
 

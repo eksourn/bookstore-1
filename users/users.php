@@ -28,6 +28,21 @@
         unset($_SESSION['l_name']);
         unset($_SESSION['user_username']);
         unset($_SESSION['user_logged_in']);
+        unset($_SESSION['payment_type']);
+        unset($_SESSION['card_number']);
+        unset($_SESSION['card_num']);
+        unset($_SESSION['cvv']);
+        unset($_SESSION['expiry_date']);
+        unset($_SESSION['address_line1']);
+        unset($_SESSION['address_line2']);
+        unset($_SESSION['city']);
+        unset($_SESSION['postal_code']);
+        unset($_SESSION['telephone']);
+        unset($_SESSION['mobile']);
+        unset($_SESSION['country']);
+        unset($_SESSION['user_id']);
+        unset($_SESSION['author_id']);
+        unset($_SESSION['is_author']);
         header('Location:../index.php');
     }
 

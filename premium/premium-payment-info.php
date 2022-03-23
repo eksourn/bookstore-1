@@ -47,7 +47,7 @@
         $_SESSION['mobile'] = $billing_info[0]['mobile'];
         $_SESSION['country'] = $billing_info[0]['country'];
     }
-    
+
     //  If nothing exists create empty vars
     if ($total_users1 == 0)
         if ($total_users2 == 0) {
@@ -83,7 +83,7 @@
             </tr>
         <?php endforeach; ?>
     </table>
-    <a href ="../users/card-payment-signup.php"><button>Add or update payment method</button></a>
+    <a href ="../premium/card-payment-premium-signup.php"><button>Add or update payment method</button></a>
     <h3>My Billing Address</h3>
     <table>
         <tr>
@@ -107,8 +107,9 @@
             </tr>
         <?php endforeach; ?>
     </table>
-    <a href ="../users/billingaddress-signup.php"><button>Add or update billing address</button></a><br><br>
-   <!-- <a href ="../users/billingaddress-signup.php"><button>Pay Now</button></a> -->
+    <a href ="../premium/billingaddress-premium-signup.php"><button>Add or update billing address</button></a><br><br>
+    <?php echo "Please verify if all the information above is correct before signing up."?><br>
+    <a href ="../premium/premium-success.php"><button>Upgrade to Premium Now</button></a>
 
 
 </html>

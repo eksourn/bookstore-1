@@ -22,17 +22,30 @@
     //  If returns 0 user is not a premium member
     if($total_users == 0) {
         echo "You're not a member!<br><br>";
-        $url = '../users/users-payment-info.php';
+
+        //  Query if there exists a payment method
+        $sql = "SELECT * FROM $tbl_user_payment WHERE user_id = '$user_id'";
+        $result = mysqli_query($conn, $sql);
+        $total_users = mysqli_num_rows($result);
+        
+        //  If user does not have a payment method goto payment-info page
+       /* if ($total_users == 0) {
+            $url = '../premium/premium-payment-info.php';
+            echo '<a href ='.$url.'>For only $9.99 a month recieve benefits such as discounts and express shipping on all orders</a>';
+        }
+        //  Else go to premium signup page
+        else {
+        }*/
+        $url = '../premium/premium-payment-info.php';
         echo '<a href ='.$url.'>For only $9.99 a month recieve benefits such as discounts and express shipping on all orders</a>';
     }
     else {
         echo "Your membership expires: ";
-        printf("%s", $users["end_date"]);
+        echo $users[0]['end_date'];
+        echo "<h1>Enjoy free shipping with our premium membership!</h1>";
+        $url = '../index.php';
+        echo "<h2><a href='../index.php'>Check out our catalogue now!</h2>";
     }
-
     mysqli_free_result($result);
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-    <h1> Premium benefits info goes here if valid member </h1>
+    

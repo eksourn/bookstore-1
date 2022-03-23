@@ -90,31 +90,31 @@
             <h3>Billing Address Info</h3>
             <div class="addressl1-signup">
                 <label for="address_line1">Address Line 1 </label>
-                <input type="text" name="address_line1" id="" placeholder="Address Line 1" required>
+                <input type="text" name="address_line1" id="address_line1" value= "<?= $_SESSION['address_line1'] ?>" placeholder="Address Line 1">
             </div>
             <div class="addressl2-signup">
                 <label for="address_line2">Address Line 2 </label>
-                <input type="text" name="address_line2" id="" placeholder="Address Line 2">
+                <input type="text" name="address_line2" id="address_line2" value= "<?= $_SESSION['address_line2'] ?>" placeholder="Address Line 2">
             </div>
             <div class="city-signup">
                 <label for="city">City: </label>
-                <input type="text" name="city" id="" placeholder="City" required>
+                <input type="text" name="city" id="city" value= "<?= $_SESSION['city'] ?>" placeholder="City">
             </div>
             <div class="postal-signup">
                 <label for="postal_code">Postal Code: </label>
-                <input type="text" name="postal_code" id="" placeholder="Postal Code" required>
+                <input type="text" name="postal_code" id="postal_code" value= "<?= $_SESSION['postal_code'] ?>" placeholder="Postal Code">
             </div>
             <div class="telephone-signup">
                 <label for="telephone">Telephone </label>
-                <input type="text" name="telephone" id="" placeholder="Format: xxxxxxxxx">
+                <input type="text" name="telephone" id="telephone" value= "<?= $_SESSION['telephone'] ?>" placeholder="Format: xxxxxxxxx">
             </div>
             <div class="mobile-signup">
                 <label for="mobile">Mobile </label>
-                <input type="text" name="mobile" id="" placeholder="Format: xxxxxxxxxx">
+                <input type="text" name="mobile" id="mobile" value= "<?= $_SESSION['mobile'] ?>" placeholder="Format: xxxxxxxxxx">
             </div>
             <div class="country-signup">
                 <label for="country">Country: </label>
-                <input type="text" name="country" id="" placeholder="Country" required>
+                <input type="text" name="country" id="country" value= "<?= $_SESSION['country'] ?>" placeholder="Country">
             </div>
             <div class="submit-buttons">
                     <button type="submit" name="billing_address_signup">Update</button>

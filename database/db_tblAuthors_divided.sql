@@ -20,7 +20,7 @@ UNIQUE(pub_username);
 -- Users Tables
 
 CREATE TABLE tbl_users (
-  user_id int(11) PRIMARY KEY NOT NULL,
+  user_id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   f_name varchar(50) NOT NULL,
   l_name varchar(50) NOT NULL,
   username varchar(20) NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE tbl_users (
 );
 
 CREATE TABLE tbl_user_address (
-  address_ID int(11) PRIMARY KEY NOT NULL,
+  address_ID int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   user_id int(11) NOT NULL,
   address_line1 varchar(80) NOT NULL,
   address_line2 varchar(80),
@@ -41,7 +41,7 @@ CREATE TABLE tbl_user_address (
 );
 
 CREATE TABLE tbl_user_payment (
-  user_payment_ID int(11) PRIMARY KEY NOT NULL,
+  user_payment_ID int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   user_id int(11) NOT NULL,
   payment_type int(11) NOT NULL,
   card_number int(11) NOT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE tbl_user_payment (
 );
 
 CREATE TABLE tbl_user_premium (
-  user_premium_id int(11) PRIMARY KEY NOT NULL,
+  user_premium_id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   user_id int(11) NOT NULL,
   start_date DATETIME DEFAULT CURRENT_TIMESTAMP,
   end_date DATETIME DEFAULT NULL,
