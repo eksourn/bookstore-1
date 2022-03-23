@@ -1,5 +1,5 @@
 <?php
-    $op = array('users'=>FALSE, 'books'=>FALSE, "publishers"=>FALSE, "discounts"=>FALSE, "authors"=>FALSE, "orders"=> FALSE );
+    $op = array('users'=>FALSE, 'books'=>FALSE, "publishers"=>FALSE, "discounts"=>FALSE, "authors"=>FALSE, "orders"=> FALSE, "shipping"=>FALSE );
     print_r($op);
     if(isset($_POST['admin_users'])){
         $op['users'] = TRUE;
@@ -13,6 +13,8 @@
         $op['authors'] = TRUE;
     }else if(isset($_POST['admin_orders'])){
         $op['orders'] = TRUE;
+    } else if(isset($_POST['admin_ship'])or isset($_GET['ship'])){
+        $op['shipping'] = TRUE;
     }
 
 
@@ -34,6 +36,7 @@
         <th>Discounts</th>
         <th>Authors</th>
         <th>Orders</th>
+        <th>Shipping</th>
         <form action="./admin.php" method="post">
             <tr >
                 <td class="admin"><input type="submit" value="Users" name="admin_users"></td>    
@@ -41,7 +44,8 @@
                 <td class="admin"><input type="submit" value="Publishers" name="admin_publishers"></td>    
                 <td class="admin"><input type="submit" value="Discounts" name="admin_discounts"></td>    
                 <td class="admin"><input type="submit" value="Authors" name="admin_authors"></td>    
-                <td class="admin"><input type="submit" value="Orders" name="admin_orders"></td>    
+                <td class="admin"><input type="submit" value="Orders" name="admin_orders"></td>  
+                <td class="admin"><input type="submit" value="Shipping" name="admin_ship"></td>  
             </tr>
         </form>
     </table>
@@ -54,6 +58,7 @@
         else if ($op['discounts']){ include('./discounts.php');}
         else if ($op['authors']){ include('./authors.php');}
         else if ($op['orders']){ include('./orders.php');}
+        else if ($op['shipping']){ include('./shipping.php');}
         
     ?>
 
