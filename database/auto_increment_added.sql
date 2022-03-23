@@ -174,17 +174,17 @@ INSERT INTO tbl_publishers(pub_name, pub_username, pub_password, pub_address, pu
 
 -- Insert Users Tables
 
-INSERT INTO tbl_users (user_id, f_name, l_name, username, password) VALUES
-(1, "John", "Smith", "user1", "pass"),
-(2, "Stacy", "Saga", "user2", "pass"),
-(3, "Sallie", "Fritz", "user3", "pass"),
-(4, "Oskar", "Mclellan", "user4", "pass"),
-(5, "Piper", "Downes", "user5", "pass"),
-(6, "Richard", "Gomez", "user6", "pass"),
-(7, "Alice", "Sing", "user7", "pass"),
-(8, "Rex", "Jones", "user8", "pass"),
-(9, "Cathy", "Kells", "user9", "pass"),
-(10, "Gene", "Martinez", "user10", "pass");
+INSERT INTO tbl_users (f_name, l_name, username, password) VALUES
+("John", "Smith", "user1", "pass"),
+("Stacy", "Saga", "user2", "pass"),
+("Sallie", "Fritz", "user3", "pass"),
+("Oskar", "Mclellan", "user4", "pass"),
+("Piper", "Downes", "user5", "pass"),
+("Richard", "Gomez", "user6", "pass"),
+("Alice", "Sing", "user7", "pass"),
+("Rex", "Jones", "user8", "pass"),
+("Cathy", "Kells", "user9", "pass"),
+("Gene", "Martinez", "user10", "pass");
 
 -- Insert User Address Tables
 
