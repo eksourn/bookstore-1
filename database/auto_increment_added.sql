@@ -158,11 +158,15 @@ FOREIGN KEY (book_id) REFERENCES tbl_books(book_id);
 
 -- shipping methods
 CREATE TABLE tbl_shipping_methods(
+    ship_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     book_type INT NOT NULL,
     is_premium BOOLEAN NOT NULL DEFAULT FALSE,
-    shipping_method VARCHAR(15) NOT NULL,
+    shipping_method VARCHAR(50) NOT NULL,
     price FLOAT(4) NOT NULL DEFAULT 0
 );
+
+ALTER TABLE tbl_shipping_methods
+ADD UNIQUE(book_type, is_premium, shipping_method);
 
 
 -- Data Insertions
@@ -283,3 +287,17 @@ VALUES(1,1,1,'good',2,35.993, 10),
 (4,3,4,'decent',2,25.23,3),
 (7,4,7, 'ok',2,13.99,3),
 (8,5,8, 'great',2,10.10,3);
+
+
+-- Insert Shipping Methods
+INSERT INTO tbl_shipping_methods (book_type, is_premium, shipping_method, price)
+VALUES
+(1, 0, "FedEx 2 Days", 12.99),
+(2, 0, "UPS 2 Days", 7.99),
+(3, 0, "Email Delivery", 12.99),
+(4, 0, "Application Delivery", 12.99),
+
+(1, 1, "FedEx 2 Days", 0.00),
+(2, 1, "UPS 2 Days",  0.00),
+(3, 1, "Email Delivery",  0.00),
+(4, 1, "Application Delivery",  0.00);
