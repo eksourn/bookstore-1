@@ -3,8 +3,7 @@
     include('../variables/variables.php');
     session_start();
     $typedIn = array('user_name'=>'');
-    print_r($typedIn);
-    print_r($_SESSION);
+
     if(isset($_POST['publisher_login'])){
         $publisher_username = htmlspecialchars($_POST['publisher_username']);
         $publisher_password = htmlspecialchars($_POST['publisher_password']);

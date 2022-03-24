@@ -25,7 +25,7 @@
 
     $result = mysqli_query($conn, $sql);
     $books_1 = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    print_r($books_1);
+
     mysqli_free_result($result);
 
     //  Logout and unset session variables

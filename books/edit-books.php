@@ -3,9 +3,7 @@
     include('../variables/variables.php');
 
     $current_book = array('id'=>'','title' =>'', 'isbn'=>'', 'price'=>'');
-    if($_SERVER['PHP_SELF'] =='/bookstore/books/edit-books.php'){
-        echo basename($_SERVER['PHP_SELF']);
-    }
+    
 
     if(isset($_GET['id'])){
 
@@ -24,8 +22,6 @@
                     $current_book['title'] = $edit[0]['title'];
                     $current_book['isbn'] = $edit[0]['isbn'];
                     $current_book['price'] = $edit[0]['price'];
-
-                    print_r($current_book);
                 } else {
                     echo '<h1>ERROR 404: NO SUCH BOOK EXIST! </h1><br>';
                 }

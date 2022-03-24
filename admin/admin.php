@@ -1,7 +1,7 @@
 <?php
     session_start();
     $op = array('users'=>FALSE, 'books'=>FALSE, "publishers"=>FALSE, "discounts"=>FALSE, "authors"=>FALSE, "orders"=> FALSE, "shipping"=>FALSE );
-    print_r($op);
+  
     if(isset($_POST['admin_users'])){
         $op['users'] = TRUE;
     } else if(isset($_POST['admin_books']) or isset($_GET['books'])){

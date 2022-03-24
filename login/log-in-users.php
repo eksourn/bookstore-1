@@ -4,8 +4,7 @@
 
     session_start();
     $typedIn = array('user_name'=>'');
-    print_r($typedIn);
-    print_r($_SESSION);
+
 
     if(isset($_POST['user_login'])){
         $user_username = htmlspecialchars($_POST['user_username']);
