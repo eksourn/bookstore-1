@@ -3,6 +3,13 @@
     include('../variables/variables.php');
 
     session_start();
+    if(isset($_SESSION['user_logged_in'])){
+        if(isset($_SESSION['is_author']) && $_SESSION['is_author']==TRUE){
+            header('Location: ../author/author.php'); 
+        } else{
+            header('Location: ../users/users.php');
+        }
+    }
     $typedIn = array('user_name'=>'');
 
 

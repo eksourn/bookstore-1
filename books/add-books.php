@@ -121,7 +121,7 @@
             ?>
         <!-- </select> -->
         </div>
-        <p>Not listed? <a href="#">Register here</a></p>
+        <p>Not listed? <a href="../signup/users-signup.php?next=<?php echo $_SERVER['PHP_SELF']; ?>">Register here</a></p>
     </div>
     <div class="input-box">
         <button type="submit" 
