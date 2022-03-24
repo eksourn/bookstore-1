@@ -1,5 +1,6 @@
 <?php
     include_once('../config/db_connection.php');
+    include('../variables/variables.php');
 
     if(isset($_POST['users_signup'])){
         $f_name = htmlspecialchars($_POST['users_signup_fname']);
@@ -7,7 +8,7 @@
         $user_username = htmlspecialchars($_POST['users_signup_username']);
         $user_password = htmlspecialchars($_POST['users_signup_password']);
 
-        $sql = "INSERT INTO tbl_users (f_name, l_name, username, passwrd) VALUES ('$f_name','$l_name', '$user_username', '$user_password')";
+        $sql = "INSERT INTO $tbl_users (f_name, l_name, username, passwrd) VALUES ('$f_name','$l_name', '$user_username', '$user_password')";
 
         if(mysqli_query($conn, $sql)){
             $last_inserted_user_id = mysqli_insert_id($conn);
