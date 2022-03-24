@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $op = array('users'=>FALSE, 'books'=>FALSE, "publishers"=>FALSE, "discounts"=>FALSE, "authors"=>FALSE, "orders"=> FALSE, "shipping"=>FALSE );
     print_r($op);
     if(isset($_POST['admin_users'])){
@@ -15,6 +16,9 @@
         $op['orders'] = TRUE;
     } else if(isset($_POST['admin_ship'])or isset($_GET['ship'])){
         $op['shipping'] = TRUE;
+    } else if(isset($_POST['admin_logout'])){
+        unset($_SESSION['admin']);
+        header("Location: ../index.php");
     }
 
 
@@ -47,6 +51,9 @@
                 <td class="admin"><input type="submit" value="Orders" name="admin_orders"></td>  
                 <td class="admin"><input type="submit" value="Shipping" name="admin_ship"></td>  
             </tr>
+            
+            <input class="input-box" type="submit" value="Logout" name="admin_logout">
+            
         </form>
     </table>
     <hr>
