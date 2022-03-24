@@ -18,6 +18,7 @@
         }
     } else if (isset($_POST['users'])){
         // this is where user log in page goes
+        header("Location: ./login/log-in-users.php");
     }else if (isset($_POST['admin'])){
         // this is where admin user goes
         header("Location: ./login/admin.php");
@@ -32,8 +33,9 @@
         <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
             <h3> Log-in</h3>
             <div class="log-in-type">
-                <button type="submit" name="users" <?php if(isset($_SESSION['publisher_logged_in']) && $_SESSION['publisher_logged_in']==True) echo 'disabled'; ?> >Users</button>
+                <button type="submit" name="users" <?php if(isset($_SESSION['publisher_logged_in']) && $_SESSION['publisher_logged_in']==True) echo 'disabled';  ?> >Users</button>
                 <button type="submit" name="publishers" <?php if(isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in']==True) echo 'disabled'; ?> >Publishers</button>
+                <button type="submit" name="admin">Admin</button>
             </div>
         </form>
     </div>
