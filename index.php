@@ -16,8 +16,19 @@
         }else{
             header('Location: ./login/log-in-publishers.php');
         }
-    } else if (isset($_POST['users'])){
-        // this is where user log in page goes
+    }
+    if(isset($_POST['users'])) {
+        if(isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] == True) {
+            if($_SESSION['is_author'] == TRUE) {
+                header(('Location: ./author/author.php'));
+            }
+            else {
+                header(('Location: ./users/users.php'));
+            }
+        }
+        else {
+            header('Location: ./login/log-in-users.php');
+        }
     }
 ?>
 
@@ -30,7 +41,7 @@
             <h3> Log-in</h3>
             <div class="log-in-type">
                 <button type="submit" name="users" <?php if(isset($_SESSION['publisher_logged_in']) && $_SESSION['publisher_logged_in']==True) echo 'disabled'; ?> >Users</button>
-                <button type="submit" name="publishers">Publishers</button>
+                <button type="submit" name="publishers" <?php if(isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in']==True) echo 'disabled'; ?> >Publishers</button>
             </div>
         </form>
     </div>
