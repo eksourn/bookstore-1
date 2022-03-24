@@ -2,40 +2,21 @@
     include('../config/db_connection.php');
     include('../functions/functions.php');
     include('../variables/variables.php');
-    $arr = array("John Smith", "Stacy Saga");
-    get_author_user_id($arr, $conn);
+    $sql = "INSERT INTO tbl_user_order(user_id) VALUE(1);";
+    if(mysqli_query($conn, $sql)){
+        $new_order_id = mysqli_insert_id($conn);
+        echo "Last inserted order id was " . $new_order_id;
+        $sql = "INSERT INTO tbl_order_history(order_id, book_id, amount, book_count) VALUES('$new_order_id', '1', '23.44', '5'), ('$new_order_id', '2', '23.44', '2'),('$new_order_id', '3', '12.39', '1'),('$new_order_id', '4', '12.48', '2'); ";
 
-    // This is for available authors
-    $sql = "SELECT DISTINCT author_name, author_id from $tbl_is_author ORDER BY author_name;";
-    $result = mysqli_query($conn, $sql);
-    $available_authors = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    mysqli_free_result($result);
+        if(mysqli_query($conn, $sql)){
+            echo "Successfully inserted";
+        } else{
+            echo "insert to order history error";
+        }
 
-    print_r($available_authors);
-    echo '<br><br><br>';
-
-    // echo build_multi_sql_authors_id_included("1", $available_authors, $names);
-
-    $map = array();
-    foreach ($available_authors  as $a){
-        $map[$a['author_name']] = $a['author_id'];
-    }
-    print_r($map);
-    echo '<br><br><br>';
-
-    echo "id of Oskar Mclellan:".$map['Oskar Mclellan'];
-    echo '<br><br><br>';
-
-   
-
-
-
-    if(isset($_POST['submit'])){
-        $names = $_POST['availabe_authors'];
-        // foreach ($names as $name){ 
-        //     echo $name."<br />";
-        // }
-        echo build_multi_sql_authors_id_included("1", $available_authors, $names);
+        
+    } else {
+        echo "create new order id error";
     }
 
 
@@ -44,20 +25,3 @@
     
 ?>
 
-<br><br><br>
-<hr>
-<form action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-<div class="book_author">
-            <label for="book_author">Author:</label>
-            <!-- <input type="text" name="book_author" id="" placeholder="Enter Author Name"> -->
-            <!-- <select multiple type="text" name="availabe_authors" id="" placeholder="Choose Author names"> -->
-                <?php $index = 0; foreach($available_authors as $authors): ?>
-                    <input type="checkbox" name="availabe_authors[]" value="<?php echo $authors['author_name']; ?>"> <?php echo $authors['author_name']; ?></input>
-                <?php $index++; endforeach;?>
-            <!-- </select> -->
-            <p>Not listed? <a href="#">Register here</a></p>
-        </div>
-        <div class="form-add">  
-            <button type="submit" name="submit" value="Submit">Add</button>
-        </div>
-</form>
