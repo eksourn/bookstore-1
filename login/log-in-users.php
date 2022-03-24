@@ -12,7 +12,7 @@
         $user_password = htmlspecialchars($_POST['user_password']);
         $typedIn['user_name'] = $user_username;
 
-        $sql = "SELECT * FROM $tbl_users WHERE username = '$user_username' AND passwrd='$user_password'";
+        $sql = "SELECT * FROM $tbl_users WHERE username = '$user_username' AND password='$user_password'";
 
         $result = mysqli_query($conn, $sql);
         $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -31,7 +31,7 @@
             $_SESSION['user_logged_in'] = True;
 
             //  Query to see if user exists in author table
-            $sql = "SELECT $tbl_is_author.author_id FROM $tbl_is_author WHERE user_id = (SELECT $tbl_users.user_id FROM $tbl_users WHERE username = '$user_username' AND passwrd='$user_password')";
+            $sql = "SELECT $tbl_is_author.author_id FROM $tbl_is_author WHERE user_id = (SELECT $tbl_users.user_id FROM $tbl_users WHERE username = '$user_username' AND password='$user_password')";
             $result = mysqli_query($conn, $sql);
             $authors = mysqli_fetch_all($result, MYSQLI_ASSOC);
             $total_authors = mysqli_num_rows($result);
