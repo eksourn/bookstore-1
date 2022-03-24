@@ -20,6 +20,7 @@
         // this is where user log in page goes
     }else if (isset($_POST['admin'])){
         // this is where admin user goes
+        header("Location: ./login/admin.php");
     }
 ?>
 

@@ -17,7 +17,21 @@
 
     <label for="search_title">Search: </label>
     <input class="search-title" type="text" name="search_title" id="" placeholder="Enter Title to Search">
-    <input class="search-author" type="text" name="search_author" id="" placeholder="Enter Author to Search">
-    <input class="search-submit" type="submit" value="Search">
+    <input class="search-author" type="text" name="search_author" id="" placeholder="Enter Author to Search">   
+    <input class="search-submit" type="submit" value="Go">
 </form>
+
+
+<form action="<?php if(basename($_SERVER['PHP_SELF']) == 'index.php') {echo './books/search-results.php'; } else {echo $_SERVER['PHP_SELF'];}?>" method="GET">
+    <label for="search_title">Best Seller </label>
+    <?php $years = range(date("Y"), 1990); ?>
+    <select class="search-title" name="search_date">
+        <option value="select">Select Year</option>
+        <?php foreach($years as $year) : ?>
+            <option value="<?php echo $year; ?>"><?php echo $year; ?></option>
+        <?php endforeach; ?>
+    </select>
+    <input class="search-submit" type="submit" value="Go">
+</form>
+
 

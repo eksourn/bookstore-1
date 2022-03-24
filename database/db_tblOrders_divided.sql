@@ -139,24 +139,29 @@ CREATE TABLE tbl_shopping_cart (
 
 
 -- Order history 
+-- New Cide
+CREATE TABLE tbl_user_order(
+    order_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    CONSTRAINT user_order_fkey FOREIGN KEY(user_id) REFERENCES tbl_users(user_id) ON DELETE CASCADE
+);
+
 CREATE TABLE tbl_order_history(
-    user_id INT NOT NULL, 
+    order_id INT NOT NULL,
     book_id INT NOT NULL,
-	order_id INT NOT NULL,
     comment VARCHAR(100) NOT NULL ,
     rating FLOAT(4) NOT NULL DEFAULT 0,
     amount FLOAT(4) NOT NULL DEFAULT 0,
     book_count INT NOT NULL DEFAULT 0,
     created_at datetime DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT order_user_fkey FOREIGN KEY (user_id) REFERENCES tbl_users(user_id) ON DELETE CASCADE
+    CONSTRAINT order_history_fkey FOREIGN KEY(order_id) REFERENCES tbl_user_order(order_id) ON DELETE CASCADE,
+    CONSTRAINT order_book_fkey FOREIGN KEY(book_id) REFERENCES tbl_books(book_id) ON DELETE CASCADE
 );
 
-ALTER TABLE tbl_order_history
-ADD CONSTRAINT order_book_fkey 
-FOREIGN KEY (book_id) REFERENCES tbl_books(book_id);
 
 ALTER TABLE tbl_order_history
-ADD UNIQUE (order_id, book_id, user_id);
+ADD UNIQUE (order_id, book_id);
+
 
 
 -- shipping methods
@@ -284,12 +289,17 @@ VALUES (1,1, 5, 35.99, true),
 
 -- Insert Order History Table
 
-INSERT INTO tbl_order_history(user_id,order_id,book_id,comment,rating,amount,book_count)
-VALUES(1,1,1,'good',2,35.993, 10),
-(2,2, 2,'poor',2,25.33,3),
-(4,3,4,'decent',2,25.23,3),
-(7,4,7, 'ok',2,13.99,3),
-(8,5,8, 'great',2,10.10,3);
+INSERT INTO tbl_user_order(user_id)
+VALUES(1),(2),(3),(4), (5);
+
+INSERT INTO tbl_order_history(order_id, book_id, comment, rating, amount, book_count)
+VALUES
+(1,1,'good',2,35.93, 10),
+(2, 2,'poor',2,25.33,3),
+(3,4,'decent',2,25.23,3),
+(4,7, 'ok',2,13.99,3),
+(5,8, 'great',2,10.10,3);
+
 
 
 -- Insert Shipping Methods
