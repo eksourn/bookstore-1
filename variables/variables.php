@@ -13,7 +13,7 @@
     $tbl_author_books = 'tbl_author_books';
     $tbl_bookinventory = 'tbl_bookinventory';
     $tbl_books = 'tbl_books';
-    $tbl_discount = 'tbl_discount';
+    $tbl_discounts = 'tbl_discounts';
     $tbl_order_history = 'tbl_order_history';
     $tbl_publishers = 'tbl_publishers';
     $tbl_shipping_methods = 'tbl_shipping_methods';

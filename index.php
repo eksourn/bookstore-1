@@ -16,19 +16,10 @@
         }else{
             header('Location: ./login/log-in-publishers.php');
         }
-    }
-    if(isset($_POST['users'])) {
-        if(isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] == True) {
-            if($_SESSION['is_author'] == TRUE) {
-                header(('Location: ./author/author.php'));
-            }
-            else {
-                header(('Location: ./users/users.php'));
-            }
-        }
-        else {
-            header('Location: ./login/log-in-users.php');
-        }
+    } else if (isset($_POST['users'])){
+        // this is where user log in page goes
+    }else if (isset($_POST['admin'])){
+        // this is where admin user goes
     }
 ?>
 
@@ -46,7 +37,8 @@
         </form>
     </div>
     <hr>
-    <h3>Availabe Books</h3>
+    <?php include("./functions/functions.php");?>
+    <?php include('./books/search-books.php'); ?>
     <?php include('./books/display-books.php') ?>
 
     <?php include('./templates/footer.php'); ?>

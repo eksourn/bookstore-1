@@ -33,9 +33,9 @@ CREATE TABLE tbl_user_address (
   address_line1 varchar(80) NOT NULL,
   address_line2 varchar(80),
   city varchar(10) NOT NULL,
-  postal_code int(15) NOT NULL,
-  telephone int(50),
-  mobile int(50) NOT NULL,
+  postal_code varchar(15) NOT NULL,
+  telephone varchar(50),
+  mobile varchar(50) NOT NULL,
   country varchar(50) NOT NULL,
   FOREIGN KEY (user_id) REFERENCES tbl_users(user_id) ON DELETE CASCADE
 );
@@ -43,8 +43,8 @@ CREATE TABLE tbl_user_address (
 CREATE TABLE tbl_user_payment (
   user_payment_ID int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   user_id int(11) NOT NULL,
-  payment_type int(11) NOT NULL,
-  card_number int(11) NOT NULL,
+  payment_type int(5) NOT NULL,
+  card_number varchar(20) NOT NULL,
   cvv int(3) NOT NULL,
   Expiry_Date VARCHAR(5) NOT NULL,
   FOREIGN KEY (user_id) REFERENCES tbl_users(user_id) ON DELETE CASCADE
@@ -158,9 +158,10 @@ FOREIGN KEY (book_id) REFERENCES tbl_books(book_id);
 
 -- shipping methods
 CREATE TABLE tbl_shipping_methods(
+    ship_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     book_type INT NOT NULL,
     is_premium BOOLEAN NOT NULL DEFAULT FALSE,
-    shipping_method VARCHAR(15) NOT NULL,
+    shipping_method VARCHAR(50) NOT NULL,
     price FLOAT(4) NOT NULL DEFAULT 0
 );
 
@@ -171,8 +172,7 @@ ADD UNIQUE(book_type, is_premium, shipping_method);
 -- Data Insertions
 -- Insert Publisher Table
 
-INSERT INTO tbl_publishers(pub_name, pub_username, pub_password, pub_address, pub_phone) VALUES
-('Scholastic Inc.', 'publisher0@gmail.com', 'password', '777 Brockton Avenue Abington MA 2351', '337-7840-37'),
+INSERT INTO tbl_publishers(pub_name, pub_username, pub_password, pub_address, pub_phone) VALUES('Scholastic Inc.', 'publisher0@gmail.com', 'password', '777 Brockton Avenue Abington MA 2351', '337-7840-37'),
 ('Scholastic', 'publisher1@gmail.com', 'password', '250 Hartford Avenue Bellingham MA 2019', '593-1424-37'),
 ('Nimble Books', 'publisher2@gmail.com', 'password', '591 Memorial Dr Chicopee MA 1020', '914-1342-94'),
 ('Gramercy Books', 'publisher3@gmail.com', 'password', '137 Teaticket Hwy East Falmouth MA 2536', '216-8439-40'),
@@ -181,57 +181,56 @@ INSERT INTO tbl_publishers(pub_name, pub_username, pub_password, pub_address, pu
 
 -- Insert Users Tables
 
-INSERT INTO tbl_users (user_id, f_name, l_name, username, password) VALUES
-(1, "John", "Smith", "user1", "pass"),
-(2, "Stacy", "Saga", "user2", "pass"),
-(3, "Sallie", "Fritz", "user3", "pass"),
-(4, "Oskar", "Mclellan", "user4", "pass"),
-(5, "Piper", "Downes", "user5", "pass"),
-(6, "Richard", "Gomez", "user6", "pass"),
-(7, "Alice", "Sing", "user7", "pass"),
-(8, "Rex", "Jones", "user8", "pass"),
-(9, "Cathy", "Kells", "user9", "pass"),
-(10, "Gene", "Martinez", "user10", "pass");
+INSERT INTO tbl_users (f_name, l_name, username, password) VALUES
+("John", "Smith", "user1", "pass"),
+("Stacy", "Saga", "user2", "pass"),
+("Sallie", "Fritz", "user3", "pass"),
+("Oskar", "Mclellan", "user4", "pass"),
+("Piper", "Downes", "user5", "pass"),
+("Richard", "Gomez", "user6", "pass"),
+("Alice", "Sing", "user7", "pass"),
+("Rex", "Jones", "user8", "pass"),
+("Cathy", "Kells", "user9", "pass"),
+("Gene", "Martinez", "user10", "pass");
 
 -- Insert User Address Tables
 
-INSERT INTO tbl_user_address (address_ID, user_id, address_line1, address_line2, city, postal_code, telephone, mobile, country) VALUES
-(1, 1, "831 Pleasant Dr.", NULL, "New York", 14075, NULL, 6656632475, "US"),
-(2, 2, "961 Sugar Ave.", "Apartment 2", "Elmhurt", 60126, 5424586975, 1542587532, "US"),
-(3, 3, "3984 Spadafore St.", "Apartment 4", "Egypt", 16801, 1111111111, 1101011215, "Africa"),
-(4, 4, "15 Fincham Way", "Unit 13", "Bordeaux", 8370, 9653214521, 0125478965, "France"),
-(5, 5, "734 Philli Lane.", NULL, "Sydney", 74352, 3652214578, 6532154785, "Australia"),
-(6, 6, "1274 Lochmere Lane", "Unit 7", "Hartford", 06103, 1524365987, 8609135211, "US"),
-(7, 7, "199 Pen Street", NULL, "Reno", 89501, NULL, 5584575876, "US"),
-(8, 8, "426 Takuhoku 5-jo", "Complex 3", "Kita-ku", 74352, 6589754858, 1245655875, "Japan"),
-(9, 9, "9797 Hasler Villages", "Apartment 365", "Lucerne", 74352, NULL, 5896542147, "Switzerland"),
-(10, 10, "826 Caynor Circle", NULL, "Belleville", 07109, NULL, 87522136695, "US");
+INSERT INTO tbl_user_address (user_id, address_line1, city, postal_code, mobile, country) VALUES
+(1, "831 Pleasant Dr.", "New York", "14075", "1111111111", "US"),
+(2, "961 Sugar Ave.", "Elmhurt", "60126", "2222222222", "US"),
+(3, "3984 Spadafore St.", "Egypt", "16801", "3333333333", "Africa"),
+(4, "15 Fincham Way", "Bordeaux", "83702", "4444444444", "France"),
+(5, "734 Philli Lane.", "Sydney", "74352", "5555555555", "Australia"),
+(6, "1274 Lochmere Lane", "Hartford", "06103", "6666666666", "US"),
+(7, "199 Pen Street", "Reno", "89501", "7777777777", "US"),
+(8, "426 Takuhoku 5-jo", "Kita-ku", "74352", "8888888888", "Japan"),
+(9, "9797 Hasler Villages", "Lucerne", "74352", "9999999999", "Switzerland"),
+(10, "826 Caynor Circle", "Belleville", "01867", "234567890", "US");
 
 -- Insert Users Payment Tables
 
-INSERT INTO tbl_user_payment (user_payment_ID, user_id, Payment_type, Card_number, CVV, Expiry_Date) VALUES
-(1, 1, 0, "4024007158886563", 992, "01/24"),
-(2, 2, 1, "5545901056284508", 862, "5/28"),
-(3, 3, 1, "347679352269123", 389, "08/25"),
-(4, 4, 0, "6222026194685065", 123, "5/22"),
-(5, 5, 1, "6011717720747974", 553, "2/27"),
-(6, 6, 0, "4024007157406207", 158, "3/29"),
-(7, 7, 0, "6011008441283071", 302, "2/26"),
-(8, 8, 0, "378422181710351", 186, "12/26"),
-(9, 9, 1, "6223050752471469", 864, "1/29"),
-(10, 10, 1, "3614377566445858", 486, "9/23");
+INSERT INTO tbl_user_payment ( user_id, Payment_type, Card_number, CVV, Expiry_Date) VALUES
+(1, 0, "4024007158886563", 992, "01/24"),
+(2, 1, "5545901056284508", 862, "5/28"),
+(3, 1, "347679352269123", 389, "08/25"),
+(4, 0, "6222026194685065", 123, "5/22"),
+(5, 1, "6011717720747974", 553, "2/27"),
+(6, 0, "4024007157406207", 158, "3/29"),
+(7, 0, "6011008441283071", 302, "2/26"),
+(8, 0, "378422181710351", 186, "12/26"),
+(9, 1, "6223050752471469", 864, "1/29"),
+(10, 1, "3614377566445858", 486, "9/23");
 
 -- Insert Users Premium Tables
 
-INSERT INTO tbl_user_premium (user_premium_id, user_id, start_date, end_date) VALUES
-(1, 1, "2018-12-14", "2025-08-18"),
-(2, 2, "2019-04-15", "2023-03-28"),
-(3, 3, "2020-11-04", "2026-08-05"),
-(4, 4, "2022-10-06", "2024-04-24"),
-(5, 5, "2021-03-23", "2025-06-26");
+INSERT INTO tbl_user_premium (user_id, start_date, end_date) VALUES
+(1, "2018-12-14", "2025-08-18"),
+(2, "2019-04-15", "2023-03-28"),
+(3, "2020-11-04", "2026-08-05"),
+(4, "2022-10-06", "2024-04-24"),
+(5, "2021-03-23", "2025-06-26");
 
 -- Insert Books Tables
-
 INSERT INTO tbl_books(isbn, title, genre, book_type, price, publisher_name) VALUES("9780439785969","Harry Potter and the HalfBlood Prince Harry Potter  6", "history", 1,  78.80, "Scholastic Inc."),
 ("9780439358071","Harry Potter 5", "fiction", 2,  95.15, "Scholastic Inc."),
 ("9780439554893","Harry Potter 2", "psychology", 1,  89.88, "Scholastic"),
@@ -288,6 +287,7 @@ VALUES(1,1,1,'good',2,35.993, 10),
 (4,3,4,'decent',2,25.23,3),
 (7,4,7, 'ok',2,13.99,3),
 (8,5,8, 'great',2,10.10,3);
+
 
 -- Insert Shipping Methods
 INSERT INTO tbl_shipping_methods (book_type, is_premium, shipping_method, price)

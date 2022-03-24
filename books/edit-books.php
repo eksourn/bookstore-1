@@ -57,12 +57,25 @@
             $current_book['title'] = '';
             $current_book['isbn'] = '';
             $current_book['price'] = '';
-            header('refresh: 0; url = ../publishers/publisher.php');
+
+            if(isset($_GET['next'])){
+                $next = $_GET['next'];
+                header("Location: $next?books=T");
+            } else {
+                header('refresh: 0; url = ../publishers/publisher.php');
+            }
+            
         } else{
             echo '<script>alert("Unable to Update Book Data")</script>';
         }
     } else if(isset($_POST['cancel'])){
-        header('Location: ../publishers/publisher.php');
+        if(isset($_GET['next'])){
+            $next = $_GET['next'];
+            header("Location: $next?books=T");
+        }else{
+            header('Location: ../publishers/publisher.php');
+        }
+        
     }
 
 ?>
