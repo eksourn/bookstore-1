@@ -10,9 +10,20 @@
 
         if($search_author == "" && $search_title=="" && $search_date!=""){
             if($search_date=="select"){
-                echo "Default Date";
+                $is_found=false;
             } else {
-                echo $search_date;
+                $start_year = $search_date;
+                $end_year = intval($search_date) + 1;
+                $sql = "SELECT SUM(book_count) AS best_selling, B.* FROM tbl_order_history AS O INNER JOIN tbl_books AS B ON O.book_id = B.book_id WHERE created_at BETWEEN '$start_year-01-01 00:00:00' AND '$end_year-01-01 00:00:00' GROUP BY O.book_id ORDER BY best_selling DESC LIMIT 1;";
+
+                $result = mysqli_query($conn, $sql);
+                if(mysqli_num_rows($result) > 0){
+                    $is_found = True;
+                    $search_books = mysqli_fetch_all($result, MYSQLI_ASSOC);
+                    mysqli_free_result($result);
+                } else {
+                    $is_found = False;
+                }
             }
         } else if($search_author == "" && $search_title=="" && $search_date==""){
             // header('Location: ../index.php');
@@ -55,6 +66,9 @@
     }
     if($is_found){
         $display_books= $search_books;
+        if($search_date != "select"){
+            echo "<h3>Best Selling Book of $search_date </h3>";
+        }
         include('./display-books.php'); 
     } else{
         echo "<h3> No search result... </h3>";
