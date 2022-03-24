@@ -21,7 +21,7 @@
     <input class="search-submit" type="submit" value="Go">
 </form>
 
-
+<br>    
 <form action="<?php if(basename($_SERVER['PHP_SELF']) == 'index.php') {echo './books/search-results.php'; } else {echo $_SERVER['PHP_SELF'];}?>" method="GET">
     <label for="search_title">Best Seller </label>
     <?php $years = range(date("Y"), 1990); ?>
@@ -33,5 +33,6 @@
     </select>
     <input class="search-submit" type="submit" value="Go">
 </form>
+<br>
 
 

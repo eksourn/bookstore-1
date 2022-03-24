@@ -29,7 +29,7 @@
             </td>
             <td style="text-align:center;">
                 <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
-                    <button style="font-size: 20px; text-align: center; border-radius: 50%;" type="submit" name="add_to_cart" value="" <?php if(isset($_SESSION['publisher_logged_in']) && $_SESSION['publisher_logged_in']==True) echo 'disabled'; ?>><b>&#43;</b></button>
+                    <button type="submit" name="add_to_cart" value="" <?php if(isset($_SESSION['publisher_logged_in']) && $_SESSION['publisher_logged_in']==True) echo 'disabled'; ?>><b>Add</b></button>
                 </form>
             </td>
         </tr>

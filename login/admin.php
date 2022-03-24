@@ -34,9 +34,10 @@
 <!DOCTYPE html>
 <html lang="en">
     <?php include('../templates/header.php'); ?>
-
+    
     <div class="center">
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+            <h3>Admin Panel Login</h3>
             <div class="input-box">
                 <label for="admin_name">Username</label>
                 <input type="text" name="admin_name" id="admin_name" placeholder="username" require>
