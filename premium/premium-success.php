@@ -53,7 +53,8 @@
         header("Location: ../premium/users-premium.php");
     }
     else {
-        echo "";
+        echo '<script>alert("Error with signing up!")</script>';
+        header("Location: ../premium/premium-payment-info.php");
     }
     exit();
 

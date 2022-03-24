@@ -28,11 +28,11 @@
         unset($_SESSION['l_name']);
         unset($_SESSION['user_username']);
         unset($_SESSION['user_logged_in']);
-        unset($_SESSION['payment_type']);
-        unset($_SESSION['card_number']);
-        unset($_SESSION['card_num']);
-        unset($_SESSION['cvv']);
-        unset($_SESSION['expiry_date']);
+        $_SESSION['payment_type'] ="";
+        $_SESSION['card_number']="";
+        $_SESSION['card_num']="";
+        $_SESSION['cvv']="";
+        $_SESSION['expiry_date']="";
         unset($_SESSION['address_line1']);
         unset($_SESSION['address_line2']);
         unset($_SESSION['city']);
@@ -58,6 +58,7 @@
     <h1>Welcome Back <?php echo $_SESSION['f_name']; ?></h1> <hr>
     <a href ="../users/users-payment-info.php">Manage Payment Info</a> <br><br>
     <a href ="../users/users-payment-info.php">My Orders</a> <br><br>
+    <a href ="../users/users-payment-info.php">My Shopping Cart</a> <br><br>
     <a href ="../premium/users-premium.php">My Benefits/Membership</a> <br><br>
     <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
         <div class="submit-buttons">
