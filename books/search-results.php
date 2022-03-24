@@ -2,12 +2,19 @@
     include('../config/db_connection.php');
     include('../variables/variables.php');
     $is_found = False;
-    if(isset($_GET['search_title']) && isset($_GET['search_author'])){
+    if(isset($_GET['search_title']) && isset($_GET['search_author']) && isset($_GET['search_date'])){
         $search_title = $_GET['search_title'];
         $search_author = $_GET['search_author'];
+        $search_date = $_GET['search_date'];
         $sql = "";
 
-        if($search_author == "" && $search_title==""){
+        if($search_author == "" && $search_title=="" && $search_date!=""){
+            if($search_date=="select"){
+                echo "Default Date";
+            } else {
+                echo $search_date;
+            }
+        } else if($search_author == "" && $search_title=="" && $search_date==""){
             // header('Location: ../index.php');
             $is_found = False;
         } else{
