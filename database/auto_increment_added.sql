@@ -155,6 +155,9 @@ ALTER TABLE tbl_order_history
 ADD CONSTRAINT order_book_fkey 
 FOREIGN KEY (book_id) REFERENCES tbl_books(book_id);
 
+ALTER TABLE tbl_order_history
+ADD UNIQUE (order_id, book_id, user_id);
+
 
 -- shipping methods
 CREATE TABLE tbl_shipping_methods(
