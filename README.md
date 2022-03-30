@@ -115,10 +115,10 @@ Folder for general variables.
 # Contributors & Parts
 
 ## Ethan Sourn
-    - Users, Authors, Admin
+    - Users, Authors, Discounts
 
 ## Kyaw Han
-    - Books, Publishers, Discounts, Admin
+    - Books, Publishers, Admin
 
 ## Ryan Ritchie
-    - Cart, Orders, Admin
+    - Cart, Orders, Shipping
