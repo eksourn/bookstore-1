@@ -11,11 +11,11 @@ Below are the list of folders in the bookstore directory and description for the
 ## How to start
 Downlad XAMPP
 
-Enable Apache and MySQL modules
+    Enable Apache and MySQL modules
 
-The parent folder is bookstore, and once the xampp server is started, please go to
+    The parent folder is bookstore, and once the xampp server is started, please go to
 
-http://localhost/bookstore/
+    http://localhost/bookstore/
 
 
 ## Admin
