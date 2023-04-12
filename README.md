@@ -7,6 +7,10 @@ Ryan Ritchie
 
 This is the Bookstore php & mysql website for Database 2 Class.
 Below are the list of folders in the bookstore directory and description for them.
+
+## How to start
+Downlad XAMPP
+Enable Apache and MySQL modules
 The parent folder is bookstore, and once the xampp server is started, please go to
 
 http://localhost/bookstore/
